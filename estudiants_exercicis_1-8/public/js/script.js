@@ -1,7 +1,7 @@
 {
-    async function getCountryDetails() {
+    async function getCountryDetails(name) {
 
-        const response = await fetch(`https://restcountries.com/v3.1/name/`);
+        const response = await fetch(`https://restcountries.com/v3.1/name/${name}`);
 
         const data = await response.json();
 
@@ -24,6 +24,16 @@
             label: 'Perú'
         }
         ]
+        
+        let selector = document.querySelector('#country');
+
+        optionsValues.forEach(e => {
+            let country = document.createElement('option');
+            let countryText = document.createTextNode(e.label);
+            country.appendChild(countryText);
+            country.setAttribute('value', e.value);
+            selector.appendChild(country);
+        });
     }
 
     setDynamicOptions();
@@ -37,6 +47,10 @@
         let countryName = event.target.value;
 
         let countryData = await getCountryDetails(countryName);
+
+        document.querySelector('#population').value = countryData[0].population;
+        document.querySelector('#urlFlag').value = countryData[0].flags.svg;
+        document.querySelector('#imatgeSeleccionada').src = countryData[0].flags.svg;
         // Descomenta la següent línia si no has aconseguit implementar la primera part de l'exercici. Comenta la línia anterior també.   
         //let countryData = await getCountryDetailsFake(countryName);
 
@@ -55,7 +69,7 @@
 
 
     // Descomentar para probar el Ejercicio 6
-    // console.log("Información sobre España:", getCountryDetails('spain'));
+    //console.log("Información sobre España:", getCountryDetails('spain'));
 
     document.querySelector('.w3-select').onchange = setCountryFlag;
 

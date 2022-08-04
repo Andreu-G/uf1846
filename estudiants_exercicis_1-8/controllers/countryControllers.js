@@ -5,11 +5,20 @@ exports.getHomePage = (req, res) => {
 }
 
 exports.postSendData = (req, res) => {
-    const fakeData = {
-        conuntryName: "spain",
-        population: 46438420,
-        urlFlag: "https://restcountries.eu/data/esp.svg"
+
+    const Data = {
+        countryName: req.body.country,
+        population: req.body.population,
+        urlflag: req.body.urlflag
     }
 
-    res.send("Dades rebudes:" + JSON.stringify(fakeData));
+    let country = new Country({
+        name: Data.countryName,
+        flagURL: Data.urlflag,
+        population: Data.population
+    })
+
+    country.save();
+
+    res.send("Dades rebudes:" + JSON.stringify(Data));
 }

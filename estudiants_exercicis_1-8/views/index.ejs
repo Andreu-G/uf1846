@@ -11,24 +11,26 @@
     <title>Load Countries</title>
 </head>
 
-<body>
+<body style="background-color: #ffecb7;">
     <main>
+        
+        <h1 style="color: #854242;">Formulario de entrada de datos</h1>
         <div class="w3-container w3-row">
-            <form class="w3-container w3-card-4 w3-quarter">
+            <form action="/post-country/" method="POST" class="w3-container w3-card-4 w3-quarter">
              <h2>Select Your Country</h2>
                 <br>
                 <label for="country">Contry Name: </label>
 
-                <select class="w3-select" id="country">
+                <select class="w3-select" id="country" name="country">
                   <option value="" disabled selected>---</option>
                   
                 </select>
 
                 <label for="population">Population: </label>
-                <input class="w3-input" type="number" id="population"></input>
+                <input class="w3-input" type="number" id="population" name="population"></input>
 
                 <label for="urlFlag">URL Flag: </label>
-                <input class="w3-input" type="text" id="urlFlag"></input>
+                <input class="w3-input" type="text" id="urlFlag" name="urlflag"></input>
 
                 <p><input type="submit" class="w3-btn w3-teal"></input>
                 </p>
@@ -38,6 +40,7 @@
             </div>
         </div>
     </main>
+
 </body>
 
 </html>

@@ -12,30 +12,26 @@
 <body>
 
     <table class="w3-table ">
+
         <tr class="w3-red">
             <th>Product Name</th>
             <th>List Price</th>
             <th>Category</th>
-
         </tr>
 
+        <% results %>
+        <% results.forEach(e => { %>
+            
+            <tr class="w3-hover-blue">
+            <td> <%- e.product_name %>
+            </td>
+            <td> <%- e.list_price %>
+            </td>
+            <td> <%- e.category %>
+            </td>
+        </tr>
 
-        <tr class="w3-hover-blue">
-            <td> Potatoes
-            </td>
-            <td> 40.00
-            </td>
-            <td>Dried Fruit & Nuts
-            </td>
-        </tr>
-        <tr class="w3-hover-blue">
-            <td> Tomatoes
-            </td>
-            <td> 20.00
-            </td>
-            <td>Dried Fruit & Nuts
-            </td>
-        </tr>
+        <% }) %>
 
     </table>
 
